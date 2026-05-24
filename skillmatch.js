@@ -82,3 +82,15 @@ vaga.forEach((itemVaga) => {
 
     console.log ("................................................................\n");
 });
+
+const vagaMaisCompativel = resumoVagas.reduce ((melhorVaga, vagaAtual) => {
+    if(vagaAtual.compatibilidade > melhorVaga.compatibilidade){
+        return vagaAtual;
+    }
+    return melhorVaga;
+});
+
+console.log ("Vaga mais compatível:");
+console.log (`Empresa: ${vagaMaisCompativel.empresa}`);
+console.log (`Cargo: ${vagaMaisCompativel.cargo}`);
+console.log (`Compatibilidade: ${vagaMaisCompativel.compatibilidade}%`);
