@@ -6,6 +6,10 @@ class Vaga{
         this.salario = salario;
         this.modalidade = modalidade;
     }
+
+     exibirResumo(){
+        return `${this.cargo} na empresa ${this.empresa}`;
+    }
 };
 
 class VagaFrontEnd extends Vaga{
@@ -19,11 +23,34 @@ class VagaFrontEnd extends Vaga{
     }
 }
 
+function criarContadorDeAnalises(){
+    let total = 0;
+
+    return function(){
+        total++;
+        return total;
+    };
+}
+
 const listaDeVagas = [
     new VagaFrontEnd ("TechStart", "Desenvolvedor Front-End", ["JavaScript", "Github", "Lógica de Programação", "TypeScript"], 2800, "Remoto", "Júnior"),
     new VagaFrontEnd ("CodeLab", "Front-End", ["JavaScript", "React", "Github", "Kanban"], 1800, "Híbrido", "Estágio"),
     new VagaFrontEnd ("WebSolutions", "Programador JavaScript", ["JavaScript", "Arrays", "Objeto", "Funções", "Html"], 3000, "Presencial", "Júnior")
 ];
+
+function finalizarAnalise (nomeCandidato, callback){
+    console.log("Análise finalizada.");
+    callback(nomeCandidato);
+}
+
+function exibirMensagemFinal(nome){
+    console.log(`${nome}, como sugestão analise as habilidades faltantes para uma próxima entrevista estar mais preparada.`);
+}
+
+console.log ("Quadro de vagas disponíveis:");
+const quadroVagas = listaDeVagas.map(itemVaga => itemVaga.exibirResumo ());
+console.log(quadroVagas.join("\n"));
+console.log ("................................................................\n");
 
 const candidato = {
     nome: "Júlia",
@@ -52,13 +79,14 @@ listaDeVagas.forEach((itemVaga) => {
 
     let porcentagem = Math.round((qtdPossui*100)/qtd);
 
+    console.log (`Análise número ${numeroAnalise}`);
     console.log (`Empresa: ${itemVaga.empresa}`);
     console.log (`Cargo: ${itemVaga.cargo}`);
     console.log (itemVaga.exibirNivel());
-    console.log (`Compatibilidade: ${(porcentagem)}%`);
+    console.log (`Compatibilidade: ${porcentagem}%`);
     console.log (`Habilidades que deram match: ${possui.join(", ")}`);
 
-     if (falta.length === 0) {
+    if (falta.length === 0) {
         console.log ("Habilidades que faltam: Você tem todos os requisitos!");
     } else {
         console.log (`Habilidades que faltam: ${falta.join(", ")}`);
@@ -75,7 +103,7 @@ listaDeVagas.forEach((itemVaga) => {
             console.log ("Classificação: Você possui baixa compatibilidade com a vaga.")
     }
 
-     resumoVagas.push({
+    resumoVagas.push({
         empresa: itemVaga.empresa,
         cargo: itemVaga.cargo,
         compatibilidade: porcentagem
@@ -94,8 +122,7 @@ const vagaMaisCompativel = resumoVagas.reduce ((melhorVaga, vagaAtual) => {
 });
 
 console.log ("Vaga mais compatível");
-console.log (`Empresa: ${vagaMaisCompativel.empresa}`);
-console.log (`Cargo: ${vagaMaisCompativel.cargo}`);
+console.log (`${vagaMaisCompativel.empresa} - ${vagaMaisCompativel.cargo}`);
 console.log (`Compatibilidade: ${vagaMaisCompativel.compatibilidade}%`);
 console.log ("................................................................\n");
 
@@ -104,3 +131,5 @@ let habilidadesSemRepeticao = [...new Set(todasFaltantes)]; //evita mostrar dupl
 console.log ("Recomendação de estudo:");
 console.log (`Priorize estudar ${habilidadesSemRepeticao.join(", ")}, pois esses conteúdos aparecem nas vagas analisadas.`);
 console.log ("................................................................\n");
+
+finalizarAnalise (candidato.nome, exibirMensagemFinal);
