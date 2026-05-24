@@ -25,14 +25,13 @@ class VagaFrontEnd extends Vaga{
 
 function criarContadorDeAnalises(){
     let total = 0;
-
     return function(){
         total++;
         return total;
     };
 }
 
-const listaDeVagas = [
+const bancoDeDadosVagas = [
     new VagaFrontEnd ("TechStart", "Desenvolvedor Front-End", ["JavaScript", "Github", "Lógica de Programação", "TypeScript"], 2800, "Remoto", "Júnior"),
     new VagaFrontEnd ("CodeLab", "Front-End", ["JavaScript", "React", "Github", "Kanban"], 1800, "Híbrido", "Estágio"),
     new VagaFrontEnd ("WebSolutions", "Programador JavaScript", ["JavaScript", "Arrays", "Objeto", "Funções", "Html"], 3000, "Presencial", "Júnior")
@@ -47,10 +46,25 @@ function exibirMensagemFinal(nome){
     console.log(`${nome}, como sugestão analise as habilidades faltantes para uma próxima entrevista estar mais preparada.`);
 }
 
-console.log ("Quadro de vagas disponíveis:");
-const quadroVagas = listaDeVagas.map(itemVaga => itemVaga.exibirResumo ());
-console.log(quadroVagas.join("\n"));
-console.log ("................................................................\n");
+function buscarVagasSimuladas(){
+    return new Promise ((resolve) => {
+        console.log("Um momento, conectando ao servidor e buscando vagas...");
+        setTimeout(() => {
+            resolve(bancoDeDadosVagas);
+        }, 2000);
+    });
+}
+
+async function iniciarSistema(){
+    const listaDeVagas = await buscarVagasSimuladas();
+
+    console.log("Vagas carregadas com sucesso!\n");
+    console.log ("................................................................\n");
+    console.log ("Quadro de vagas disponíveis:");
+
+    const quadroVagas = listaDeVagas.map(itemVaga => itemVaga.exibirResumo ());
+    console.log(quadroVagas.join("\n"));
+    console.log ("................................................................\n");
 
 const candidato = {
     nome: "Júlia",
@@ -137,3 +151,6 @@ console.log (`Priorize estudar ${habilidadesSemRepeticao.join(", ")}, pois esses
 console.log ("................................................................\n");
 
 finalizarAnalise (candidato.nome, exibirMensagemFinal);
+}
+
+iniciarSistema();
