@@ -10,7 +10,7 @@ class Vaga{
      exibirResumo(){
         return `${this.cargo} na empresa ${this.empresa}`;
     }
-};
+}
 
 class VagaFrontEnd extends Vaga{
     constructor (empresa, cargo, requisitos, salario, modalidade, nivel){
@@ -39,7 +39,7 @@ const listaDeVagas = [
 ];
 
 function finalizarAnalise (nomeCandidato, callback){
-    console.log("Análise finalizada.");
+    console.log("Análise finalizada!");
     callback(nomeCandidato);
 }
 
@@ -63,7 +63,11 @@ let habilidadesCandidato = candidato.habilidades;
 let resumoVagas = [];
 let todasFaltantes = [];
 
-listaDeVagas.forEach((itemVaga) => {
+const contarVaga = criarContadorDeAnalises();
+
+for (const itemVaga of listaDeVagas) {
+    let numeroAnalise = contarVaga();
+
     let precisa = itemVaga.requisitos;
     
     let possui = precisa.filter ((item) => {
@@ -112,7 +116,7 @@ listaDeVagas.forEach((itemVaga) => {
     todasFaltantes.push(...falta);
 
     console.log ("................................................................\n");
-});
+};
 
 const vagaMaisCompativel = resumoVagas.reduce ((melhorVaga, vagaAtual) => {
     if(vagaAtual.compatibilidade > melhorVaga.compatibilidade){
