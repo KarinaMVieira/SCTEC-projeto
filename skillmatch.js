@@ -34,6 +34,7 @@ const vaga = [
 
 let habilidadesCandidato = candidato.habilidades;
 let resumoVagas = [];
+let todasFaltantes = [];
 
 vaga.forEach((itemVaga) => {
     let precisa = itemVaga.requisitos;
@@ -80,6 +81,8 @@ vaga.forEach((itemVaga) => {
         compatibilidade: porcentagem
     });
 
+    todasFaltantes.push(...falta);
+
     console.log ("................................................................\n");
 });
 
@@ -90,7 +93,14 @@ const vagaMaisCompativel = resumoVagas.reduce ((melhorVaga, vagaAtual) => {
     return melhorVaga;
 });
 
-console.log ("Vaga mais compatível:");
+console.log ("Vaga mais compatível");
 console.log (`Empresa: ${vagaMaisCompativel.empresa}`);
 console.log (`Cargo: ${vagaMaisCompativel.cargo}`);
 console.log (`Compatibilidade: ${vagaMaisCompativel.compatibilidade}%`);
+console.log ("................................................................\n");
+
+let habilidadesSemRepeticao = [...new Set(todasFaltantes)]; //evita mostrar duplicado
+
+console.log ("Recomendação de estudo:");
+console.log (`Priorize estudar ${habilidadesSemRepeticao.join(", ")}, pois esses conteúdos aparecem nas vagas analisadas.`);
+console.log ("................................................................\n");
