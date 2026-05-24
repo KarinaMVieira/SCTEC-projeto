@@ -1,3 +1,30 @@
+class Vaga{
+    constructor (empresa, cargo, requisitos, salario, modalidade){
+        this.empresa = empresa;
+        this.cargo = cargo;
+        this.requisitos = requisitos;
+        this.salario = salario;
+        this.modalidade = modalidade;
+    }
+};
+
+class VagaFrontEnd extends Vaga{
+    constructor (empresa, cargo, requisitos, salario, modalidade, nivel){
+        super (empresa, cargo, requisitos, salario, modalidade);
+        this.nivel = nivel;
+    }
+
+    exibirNivel(){
+        return `Nível da vaga: ${this.nivel}`;
+    }
+}
+
+const listaDeVagas = [
+    new VagaFrontEnd ("TechStart", "Desenvolvedor Front-End", ["JavaScript", "Github", "Lógica de Programação", "TypeScript"], 2800, "Remoto", "Júnior"),
+    new VagaFrontEnd ("CodeLab", "Front-End", ["JavaScript", "React", "Github", "Kanban"], 1800, "Híbrido", "Estágio"),
+    new VagaFrontEnd ("WebSolutions", "Programador JavaScript", ["JavaScript", "Arrays", "Objeto", "Funções", "Html"], 3000, "Presencial", "Júnior")
+];
+
 const candidato = {
     nome: "Júlia",
     area: "Front-End",
@@ -5,38 +32,11 @@ const candidato = {
     experienciaMeses: 4
 };
 
-const vaga = [
-    {
-    id:1,
-    empresa: "TechStart",
-    cargo: "Desenvolvedor Front-End Júnior",
-    requisitos: ["JavaScript", "Github", "Lógica de Programação", "TypeScript"],
-    salario: 2800,
-    modalidade: "Remoto"
-    },
-    {
-    id:2,
-    empresa: "CodeLab",
-    cargo: "Estágio Front-End",
-    requisitos: ["JavaScript", "React", "Github", "Kanban"],
-    salario: 1800,
-    modalidade: "Híbrido"
-    },
-    {
-    id:3,
-    empresa: "WebSolutions",
-    cargo: "Programador JavaScript Júnior",
-    requisitos: ["JavaScript", "Arrays", "Objeto", "Funções", "Html"],
-    salario: 3000,
-    modalidade: "Presencial"
-    }
-];
-
 let habilidadesCandidato = candidato.habilidades;
 let resumoVagas = [];
 let todasFaltantes = [];
 
-vaga.forEach((itemVaga) => {
+listaDeVagas.forEach((itemVaga) => {
     let precisa = itemVaga.requisitos;
     
     let possui = precisa.filter ((item) => {
@@ -53,7 +53,8 @@ vaga.forEach((itemVaga) => {
     let porcentagem = Math.round((qtdPossui*100)/qtd);
 
     console.log (`Empresa: ${itemVaga.empresa}`);
-    console.log (`Cargo: ${itemVaga.cargo}`);    
+    console.log (`Cargo: ${itemVaga.cargo}`);
+    console.log (itemVaga.exibirNivel());
     console.log (`Compatibilidade: ${(porcentagem)}%`);
     console.log (`Habilidades que deram match: ${possui.join(", ")}`);
 
@@ -65,7 +66,6 @@ vaga.forEach((itemVaga) => {
 
     switch (true){
         case (porcentagem >= 80):
-
             console.log ("Classificação: Você possui alta compatibilidade com a vaga.")
         break;
         case (porcentagem >= 50):
