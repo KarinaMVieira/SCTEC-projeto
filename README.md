@@ -14,6 +14,7 @@ O simulador analisa os requisitos de vagas, habilidades que o candidato possui, 
 - Vaga que possui maior compatibilidade;
 - Recomendações de estudos para o condidato. 
 
+
 O projeto foi desenvolvido no VS Code com o nome de skillmatch.js e testado diretamente no console de ferramentas do desenvolvedor do Google Chrome. O fluxo de trabalho foi gerenciado via Git utilizando uma estrutura de Git Flow dividida nas branches: main, develop, feat/analise-vagas e docs/readme. A organização visual das tarefas foi estruturada por meio de um quadro Kanban no Trello, dividido em colunas estrategicamente separadas por: informações gerais do projeto, backlog, a fazer, em andamento e concluído.
 
 
@@ -40,7 +41,7 @@ Projeto-SCTEC/
 
 ## Objetivo
 
-Praticar os principais conceitos do módulo:
+Praticar os principais conceitos do módulo como:
 
 - Lógica de programação;
 - JavaScript;
@@ -79,7 +80,7 @@ Você pode executar dessa forma:
 
 ## Extensões recomendadas
 
-Para o desenvolvimento e execução deste projeto, recomenda-se o uso das seguintes ferramentas no VS Code:
+Para o desenvolvimento e execução deste projeto, recomenda-se o uso das seguintes ferramentas no VS Code
 
 - JavaScript (ES6) code snippets;
 - Prettier - Code formatter;
