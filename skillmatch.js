@@ -54,5 +54,12 @@ vaga.forEach((itemVaga) => {
     console.log (`Cargo: ${itemVaga.cargo}`);    
     console.log (`Compatibilidade: ${Math.round(porcentagem)}%`);
     console.log (`Habilidades que deram match: ${possui.join(", ")}`);
+
+     if (falta.length === 0) {
+        console.log ("Habilidades que faltam: Você tem todos os requisitos!");
+    } else {
+        console.log (`Habilidades que faltam: ${falta.join(", ")}`);
+    }
+
     console.log ("................................................................\n");
 });
