@@ -33,6 +33,7 @@ const vaga = [
 ];
 
 let habilidadesCandidato = candidato.habilidades;
+let resumoVagas = [];
 
 vaga.forEach((itemVaga) => {
     let precisa = itemVaga.requisitos;
@@ -52,7 +53,7 @@ vaga.forEach((itemVaga) => {
 
     console.log (`Empresa: ${itemVaga.empresa}`);
     console.log (`Cargo: ${itemVaga.cargo}`);    
-    console.log (`Compatibilidade: ${Math.round(porcentagem)}%`);
+    console.log (`Compatibilidade: ${(porcentagem)}%`);
     console.log (`Habilidades que deram match: ${possui.join(", ")}`);
 
      if (falta.length === 0) {
@@ -60,6 +61,24 @@ vaga.forEach((itemVaga) => {
     } else {
         console.log (`Habilidades que faltam: ${falta.join(", ")}`);
     }
+
+    switch (true){
+        case (porcentagem >= 80):
+
+            console.log ("Classificação: Você possui alta compatibilidade com a vaga.")
+        break;
+        case (porcentagem >= 50):
+            console.log ("Classificação: Você possui média compatibilidade com a vaga.")
+        break;
+        default:
+            console.log ("Classificação: Você possui baixa compatibilidade com a vaga.")
+    }
+
+     resumoVagas.push({
+        empresa: itemVaga.empresa,
+        cargo: itemVaga.cargo,
+        compatibilidade: porcentagem
+    });
 
     console.log ("................................................................\n");
 });
