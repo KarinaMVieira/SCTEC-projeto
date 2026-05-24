@@ -1,7 +1,7 @@
 const candidato = {
     nome: "Júlia",
     area: "Front-End",
-    habilidades: ["JavaScript", "Github", "Lógica de Programação", "Kanban"],
+    habilidades: ["JavaScript", "Github", "Lógica de Programação"],
     experienciaMeses: 4
 };
 
@@ -10,7 +10,7 @@ const vaga = [
     id:1,
     empresa: "TechStart",
     cargo: "Desenvolvedor Front-End Júnior",
-    requisitos: ["JavaScript", "Github", "Lógica de Programação"],
+    requisitos: ["JavaScript", "Github", "Lógica de Programação", "TypeScript"],
     salario: 2800,
     modalidade: "Remoto"
     },
@@ -31,3 +31,28 @@ const vaga = [
     modalidade: "Presencial"
     }
 ];
+
+let habilidadesCandidato = candidato.habilidades;
+
+vaga.forEach((itemVaga) => {
+    let precisa = itemVaga.requisitos;
+    
+    let possui = precisa.filter ((item) => {
+        return habilidadesCandidato.includes (item);
+    });
+
+    let falta = precisa.filter((item) => {
+        return !habilidadesCandidato.includes(item);
+    });
+
+    let qtdPossui = possui.length;
+    let qtd = precisa.length;
+
+    let porcentagem = Math.round((qtdPossui*100)/qtd);
+
+    console.log (`Empresa: ${itemVaga.empresa}`);
+    console.log (`Cargo: ${itemVaga.cargo}`);    
+    console.log (`Compatibilidade: ${Math.round(porcentagem)}%`);
+    console.log (`Habilidades que deram match: ${possui.join(", ")}`);
+    console.log ("................................................................\n");
+});
