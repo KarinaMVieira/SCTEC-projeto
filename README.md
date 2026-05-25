@@ -106,4 +106,4 @@ A internet opera fundamentalmente sob o modelo cliente-servidor. O cliente repre
 
 **Trello**: [Kanban do projeto.](https://trello.com/b/UNWN8EX5/projeto-skillmatch-javascript)
 
-**Google Drive**: [Vídeo explicativo do projeto.] ()
+**Google Drive**: [Vídeo explicativo do projeto.](https://drive.google.com/drive/folders/178rqUXCoNvvYRCJDBtAuHQAJSery8Q37?usp=sharing)
