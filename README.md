@@ -24,18 +24,18 @@ O projeto foi desenvolvido no VS Code com o nome de skillmatch.js e testado dire
 Projeto-SCTEC/
 │
 ├── skillmatch.js
-│
+│    │
+│    └── Fluxo de Branches
+│        ├── main
+│        ├── develop
+│        ├── feat/analise-vagas
+│        └── docs/readme
+│ 
 └── README.md
     │
-    ├── Links Externos
-    │   ├── Quadro Kanban ──► Trello
-    │   └── Vídeo ────► Google Drive
-    │
-    └── Fluxo de Branches
-        ├── main
-        ├── develop
-        ├── feat/analise-vagas
-        └── docs/readme
+    └── Links Externos
+        ├── Quadro Kanban ──► Trello
+        └── Vídeo ────► Google Drive
 ```
 
 
